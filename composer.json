@@ -1,5 +1,5 @@
 {
-    "name": "food-ticket/cloudwatch-logger",
+    "name": "foodticket/cloudwatch-logger",
     "description": "Log events to AWS CloudWatch including embedded metrics",
     "keywords": ["AWS", "CloudWatch", "log", "embedded metrics", "metrics"],
     "type": "library",
