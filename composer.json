@@ -1,5 +1,5 @@
 {
-    "name": "morscate/cloudwatch-logger",
+    "name": "food-ticket/cloudwatch-logger",
     "description": "Log events to AWS CloudWatch including embedded metrics",
     "keywords": ["AWS", "CloudWatch", "log", "embedded metrics", "metrics"],
     "type": "library",
@@ -25,6 +25,10 @@
         {
             "name": "Rik Morskate",
             "email": "rik@morscate.nl"
+        },
+        {
+            "name": "Foodticket",
+            "email": "developers@foodticket.nl"
         }
     ],
     "minimum-stability": "stable",
