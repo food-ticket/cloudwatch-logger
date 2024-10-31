@@ -4,6 +4,8 @@ namespace Morscate\CloudwatchLogger;
 
 use Aws\CloudWatchLogs\CloudWatchLogsClient;
 use Aws\CloudWatchLogs\Exception\CloudWatchLogsException;
+use Aws\Command;
+use Aws\Exception\AwsException;
 use Aws\Result;
 use Illuminate\Support\Facades\Log;
 
@@ -40,20 +42,17 @@ class CloudwatchClient
         ];
 
         try {
-            $response = $this->client->putLogEvents($data);
+            return $this->client->putLogEvents($data);
         } catch (CloudWatchLogsException $exception) {
             if ($exception->getAwsErrorCode() === 'ResourceNotFoundException') {
                 $this->createLogStream($streamName);
-                $response = $this->putLogs($streamName, $entries);
 
-                return $response;
-
+                return $this->putLogs($streamName, $entries);
             }
 
             Log::error($exception->getMessage(), $exception->toArray());
+            throw new CloudWatchLogsException($exception->getMessage(), new Command('put-log-events'));
         }
-
-        return $response;
     }
 
     public function createLogStream(string $streamName): void
