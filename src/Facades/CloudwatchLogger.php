@@ -16,6 +16,11 @@ use Illuminate\Support\Facades\Facade;
  */
 class CloudwatchLogger extends Facade
 {
+    /**
+     * Each log entry needs its own builder; a cached instance would carry metrics and dimensions into every later entry.
+     */
+    protected static $cached = false;
+
     protected static function getFacadeAccessor(): string
     {
         return 'CloudwatchLogger';
